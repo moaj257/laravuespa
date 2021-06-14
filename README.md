@@ -2,15 +2,15 @@
 > A Laravel Vue Single Page Application starter kit.
 
 ## Features
-[x] Laravel 8
-[x] Vue + VueRouter
-[x] Pages with dynamic import
-[x] Login Page
-[x] Laravel Sanctum
-[x] Token Based Authentication
-[x] Tailwind V2 Integration
-[ ] Socialite integration
-[ ] Vuex
+ - [x] Laravel 8
+ - [x] Vue + VueRouter
+ - [x] Pages with dynamic import
+ - [x] Login Page
+ - [x] Laravel Sanctum
+ - [x] Token Based Authentication
+ - [x] Tailwind V2 Integration
+ - [ ] Socialite integration
+ - [ ] Vuex
 
 ## Installation
 - `composer create-project --prefer-dist laravel/laravel projectname`
