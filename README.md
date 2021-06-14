@@ -19,37 +19,42 @@
 - Edit `.env` and set your database connection details
 - `php artisan migrate`
 - Open `app/Http/Kernel.php` & update the following
+
     - ```php
         'api' => [
                 \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
                 'throttle:api',
                 \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            ],
-    ```
+            ],```
+
 - Open `App\Models\User` & update the following
+
     - ```php
         use Laravel\Sanctum\HasApiTokens;
         class User extends Authenticatable {
             use HasApiTokens, HasFactory, Notifiable;
-        }
-    ```
+        }```
+
 - On Login, Use the following code to generate token for a user
+
     - ```php
         use Illuminate\Http\Request;
         Route::post('/tokens/create', function (Request $request) {
             $token = $request->user()->createToken($request->token_name);
 
             return ['token' => $token->plainTextToken];
-        });
-    ```
+        });```
+
 - On Logout, Use the following
+
     - ```php
-        $request->user()->currentAccessToken()->delete();
-    ```
+        $request->user()->currentAccessToken()->delete();```
+
 - To Logout from all devices, Use the following
+
     - ```php
-        $user->tokens()->delete();
-    ```
+        $user->tokens()->delete();```
+        
 - `npm install`
 - `php artisan serve`
 
