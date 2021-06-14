@@ -54,7 +54,7 @@
 
     - ```php
         $user->tokens()->delete();
-        
+
 - `npm install`
 - `php artisan serve`
 
