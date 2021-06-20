@@ -11,9 +11,12 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    const loggedIn = localStorage.getItem('user');
+    const loggedIn = localStorage.getItem('_token');
     if (!loggedIn && to.path !== '/') {
         next('/');
+        return
+    } else if(loggedIn && to.path === '/') {
+        next('/chat');
         return
     }
     next();

@@ -14,7 +14,7 @@ class AuthController extends Controller
 
     public function login(Request $request) {
         $credentials = $request->validate([
-            'email' => 'required|string|email|',
+            'email' => 'required|string|email',
             'password' => 'required|string|min:6'
         ]);
 
@@ -27,15 +27,14 @@ class AuthController extends Controller
 
         $data = [
             'user' => $user,
-            'token' => $token
+            'token' => explode("|", $token)[1]
         ];
 
         return $this->success('User Logged In', 201, $data);
     }
 
     public function logout(Request $request) {
-        $request->user->tokens()->delete();
-        // $request->user()->currentAccessToken()->delete();
+        $request->user()->tokens()->delete();
         return $this->success('User Logged Out');
     }
 }

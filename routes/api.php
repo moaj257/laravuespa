@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OAuthController;
 use App\Http\Controllers\SecretController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,8 +21,10 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/me', function (Request $request) {
         return $request->user();
     });
-    Route::post('/auth/logout', [AuthController::class, 'logout']);
+    Route::post('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 
 Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
-Route::get('/auth/secrets', [SecretController::class, 'index'])->name('secret.index');
+Route::post('/auth/{driver}', [OAuthController::class, 'redirect'])->name('oauth.redirect');
+Route::get('/auth/callback/{driver}', [OAuthController::class, 'handleCallback'])->name('oauth.callback');
+// Route::get('/auth/secrets', [SecretController::class, 'index'])->name('secret.index');
