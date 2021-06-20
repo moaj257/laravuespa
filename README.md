@@ -9,7 +9,7 @@
  - [x] Laravel Sanctum
  - [x] Token Based Authentication
  - [x] Tailwind V2 Integration
- - [ ] Socialite integration
+ - [x] Socialite integration
  - [ ] Vuex
 
 ## Installation
